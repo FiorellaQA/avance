@@ -1,0 +1,132 @@
+body, video{
+	margin: 0;
+	padding: 0;
+	font-family: Verdana;
+}
+html, body{
+	height: 100%;
+	background-color: #F6F9FC;
+}
+header{
+	position: relative;
+	overflow: hidden;
+	height: 100%;
+	min-height: 700px;
+}
+.headers{
+	z-index: 2;
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+	flex-flow: column;
+}
+
+/*h2.header, h3.header{
+  z-index: 2;
+  margin:0px;
+  padding: :0px;
+}*/
+div.logo{
+    top: -6px;
+    
+    background: url(logo.png) no-repeat center;
+    height: 273px;
+    width: 455px;
+    position: absolute;
+}
+div.header-description{
+	font-family: 'Dancing Script', cursive;
+    /* margin-top: 0px; */
+    font-size: 35px;
+    font-family: 'Dancing Script', cursive;
+    color: white;
+    height: 235px;
+}
+/*h2{
+  color: #fff;
+  font-weight: bolder;
+  font-size:50px;
+  text-shadow: 2px 2px #000;
+  text-transform: uppercase;
+}
+h3.header{
+	color:#ccc;
+	text-shadow: 2px 2px #000;
+}*/
+.video {
+    -webkit-filter: blur(3px);
+    -moz-filter: blur(3px);
+    -o-filter: blur(3px);
+    -ms-filter: blur(3px);
+    filter: blur(3px);
+    position: absolute;
+    z-index: 1;
+
+
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -ms-transform: translateX(-50%) translateY(-50%);
+    -o-transform: translateX(-50%) translateY(-50%);
+   	transform: translateX(-50%) translateY(-50%);
+   	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: auto;
+	height: auto;
+	/*height: 110%;*/
+}
+.wave{
+	width: 100%;
+    position: absolute;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.wavies{
+	z-index: 10;
+	height: 247px;
+    bottom: 0;
+    background-image: url(waves.svg);
+    background-position: center top;
+}
+.wavy{
+	z-index: 10;
+	height: 192px;
+    margin: auto;
+    bottom: -2px;
+    background-image: url(last-wave.svg);
+    background-position: center top;
+}
+/*div.content-logo{
+	opacity: .99;
+}
+span.logo{
+	background-image: url(logo.png);
+	background-repeat: no-repeat;
+}*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
