@@ -1,3 +1,193 @@
+nav{
+  top:0px;
+  margin-top:0px; 
+  padding-top:0px;
+  position: fixed;
+  left: 0px;
+  width: 100%;
+  color: black;
+  height: 80px;
+  z-index: 1000;
+  background: none;
+  transition: all 0.6s cubic-bezier(0.7,0.01,0.3,1);
+}
+.logo,
+.menu{
+  position: absolute;
+  z-index: 2000; /*Si coloco 1000 el enlace pierde efecto*/
+}
+.logo{
+    background-size: contain;
+    width: 174px;
+    height: 72px;
+    padding: 0.4% 3%;
+    text-align: left;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-image: url(logo2.png);
+}
+.logo img{
+  z-index: 1000;
+}
+
+/*Armando nuestra hamburguesa*/
+a .menu{
+  top: 0;
+  right: 0;
+  height: 4px;
+  width: 24px;
+  text-align: right;
+  margin: 2rem 2rem;
+  background: #f7b617;
+  transition: all 0.3s;
+}
+.menu::before{
+  top:-8px;
+}
+.menu::after{
+  top: 8px;
+}
+#toggle:hover .menu:before{
+  top: -9px;
+}
+#toggle:hover .menu:after{
+  top: 9px;
+}
+.menu::before,
+.menu::after{
+  content: '';
+  width: 24px;
+  height: 4px;
+  z-index: -1;
+  display: block;
+  position: absolute;
+  background: #f7b617;
+  transition: all 0.3s;
+}
+#toggle:hover{
+  transition: top 0.4s;
+}
+/*--------end Hamburger-----*/
+
+/*---Creando la X---*/
+.open .menu{
+  background: none !important;
+}
+.open .menu::after{
+  top:0 !important;
+  background: #fff !important; 
+  transform: rotate(45deg);
+}
+.open .menu::before{
+  top:0 !important;
+  background: #fff !important; 
+  transform: rotate(-45deg);
+}
+/*----------------------------------------*/
+nav .nav-background{
+  top: 0px;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1500;
+  display: table;
+  background: none;
+  position: absolute;
+  transition: background-color 0.6s cubic-bezier(0.7, 0.01, 0.3, 1);
+}
+nav.open .nav-background{
+  opacity: 1;
+  background-color:rgba(247, 182, 23, 0.81) !important;
+  transition: background-color 0.6s cubic-bezier(0.7, 0.01, 0.3, 1);
+}
+nav.open{
+  height: 100%;
+  transition: none;
+  -o-transition:none;
+  -moz-transition:none;
+  -webkit-transition:none;
+}
+nav ul{
+  top: -10%;
+  padding: 0;
+  opacity: 0;
+  width: 100%;
+  text-align: center;
+  visibility: hidden;
+  display: table-cell;
+  vertical-align: middle;
+  transform: perspective(600px) rotateX(10deg);
+  transition: all 0.5s cubic-bezier(0.7,0,0.36,0.63);
+}
+nav ul li{
+  visibility: hidden;
+}
+nav ul li a{
+  color: white;
+  width: 100%;
+  display: block;
+  padding: 8px 0 0;
+  letter-spacing: -0.06em;
+}
+nav ul li a:hover{
+    color:#f7b617;
+    background-color: white;
+}
+nav.open ul{
+  top: 0;
+  opacity: 1;
+  margin-top: 0;
+  visibility: visible;
+  transform: perspective(600px) rotateX(0deg);
+}
+nav.open ul li {
+  color: #fff;
+  font-size: 60px;
+  visibility: visible !important;
+}
+
+.solid #toggle .menu {
+  background: #fff;
+}
+.solid #toggle .menu:after{
+  background-color: #fff;
+}
+.solid #toggle .menu:before{
+  background-color: #fff;
+}
+.header-in{
+  background-color: rgba(247, 182, 23, 0.81);
+}
+.overflow-hidden{
+  overflow: hidden;
+}
+/*--------fin del menu--------------*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 body, video{
 	margin: 0;
 	padding: 0;
@@ -13,98 +203,197 @@ header{
 	height: 100%;
 	min-height: 700px;
 }
-.headers{
-	z-index: 2;
-	position: relative;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	height: 100%;
-	flex-flow: column;
-}
-
-/*h2.header, h3.header{
-  z-index: 2;
-  margin:0px;
-  padding: :0px;
-}*/
-div.logo{
-    top: -6px;
-    
-    background: url(logo.png) no-repeat center;
-    height: 273px;
-    width: 455px;
-    position: absolute;
-}
-div.header-description{
-	font-family: 'Dancing Script', cursive;
-    /* margin-top: 0px; */
-    font-size: 35px;
-    font-family: 'Dancing Script', cursive;
-    color: white;
-    height: 235px;
-}
-/*h2{
-  color: #fff;
-  font-weight: bolder;
-  font-size:50px;
-  text-shadow: 2px 2px #000;
-  text-transform: uppercase;
-}
-h3.header{
-	color:#ccc;
-	text-shadow: 2px 2px #000;
-}*/
 .video {
-    -webkit-filter: blur(3px);
-    -moz-filter: blur(3px);
-    -o-filter: blur(3px);
-    -ms-filter: blur(3px);
-    filter: blur(3px);
+  -webkit-filter: blur(3px);
+  -moz-filter: blur(3px);
+  -o-filter: blur(3px);
+  -ms-filter: blur(3px);
+  filter: blur(3px);
+  position: absolute;
+  z-index: 1;
+
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -ms-transform: translateX(-50%) translateY(-50%);
+  -o-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: auto;
+  height: auto;
+  /*height: 110%;*/
+}
+div.content_header{
+    top: -65px;
+    width: 100%;
+    z-index: 2;
     position: absolute;
-    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    flex-flow: column;
+}
+/*div.logo{
+    top: -29px;
+    background: url(logo2.png) no-repeat center;
+    height: 210px;
+    width: 292px;
+    position: absolute;
+    background-size: contain;
+    left: -4px;
+}*/
+h3{
+  padding: 0;
+  margin:0;
+  font-size: 23px;
+  box-sizing: content-box;
+  color: white;
+    font-family: 'Dancing Script', cursive;
 
+}
+/*    font-family: 'Permanent Marker', cursive;
+    font-family: 'Rancho', cursive;
+font-family: 'Fontdiner Swanky', cursive;
+font-family: 'Barrio', cursive;
+font-family: 'Slackey', cursive;*/
 
-    -webkit-transform: translateX(-50%) translateY(-50%);
-    -moz-transform: translateX(-50%) translateY(-50%);
-    -ms-transform: translateX(-50%) translateY(-50%);
-    -o-transform: translateX(-50%) translateY(-50%);
-   	transform: translateX(-50%) translateY(-50%);
-   	position: absolute;
-	top: 50%;
-	left: 50%;
-	width: auto;
-	height: auto;
-	/*height: 110%;*/
+h1{
+  text-transform: lowercase;
+    padding: 0;
+  margin:0;
+   font-family: 'Dancing Script', cursive;
+
+  /*font-weight: bold;*/
+   /* font-family: 'Fontdiner Swanky', cursive;*/
+    text-shadow: 2px 2px #fff;
+    box-sizing: content-box;
+    color: white;
+    font-size: 61px;
+}
+p.frase{
+  position: absolute;
+  color: white;
+  font-family: 'Dancing Script', cursive;
+  font-size: 30px;
+  top: 228px;
+}
+cite.frase-autor{
+    top: 294px;
+    position: absolute;
+    font-size: 15px;
+    color: white;
+    font-family: 'Dancing Script', cursive;
+    /* float: right; */
+    right: 282px;
+}
+.css-typing{
+  width: 600px;
+  white-space: nowrap;
+  overflow: hidden;
+  -webkit-animation: type 10s steps(50, end);
+  animation: type 5s steps(50, end);
+
+}
+@keyframes type{
+  from { width: 0; }
+}
+
+@-webkit-keyframes type{
+    from { width: 0; }
+}
+
+.buttom{
+  margin-top: 25px;
+  text-decoration: none;
+    /* display: inline-block; */
+    /* width: auto; */
+    /* height: 50px; */
+  line-height: 50px;
+  padding: 0 30px;
+  background-image: -webkit-linear-gradient(left,#F1404B 0,#FCA43E 100%);
+  background-image: linear-gradient(90deg,#F1404B 0,#FCA43E 100%);
+  box-shadow: 0 1px 3px 0 rgba(0,0,0,.05), 0 2px 6px 0 rgba(0,0,0,.1);
+  border-radius: 31px;
+  /* border: 0; */
+  font-size: 15px;
+  font-weight: 700;
+  color: #fff;
+  text-align: center;
+  text-transform: uppercase;
+  /* letter-spacing: 1.49px; */
+  cursor: pointer;
+  font-family: 'Open Sans Condensed', sans-serif;
 }
 .wave{
 	width: 100%;
-    position: absolute;
-    background-size: cover;
-    background-repeat: no-repeat;
+  position: absolute;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 .wavies{
 	z-index: 10;
 	height: 247px;
-    bottom: 0;
-    background-image: url(waves.svg);
-    background-position: center top;
+  bottom: 0;
+  background-image: url(waves.svg);
+  background-position: center top;
 }
 .wavy{
 	z-index: 10;
 	height: 192px;
-    margin: auto;
-    bottom: -2px;
-    background-image: url(last-wave.svg);
-    background-position: center top;
+  margin: auto;
+  bottom: -2px;
+  background-image: url(last-wave.svg);
+  background-position: center top;
 }
-/*div.content-logo{
-	opacity: .99;
+#services{
+    position: relative;
+  overflow: hidden;
+  height: 100%;
+  min-height: 700px;
+
+  background-color: #ad5353; /*Color de fondo*/
+  text-align: center; /*Alineacion al centro*/
+  color: #fff; /*color al texto: blanco*/
+  padding: 70px 7px; 
 }
-span.logo{
-	background-image: url(logo.png);
-	background-repeat: no-repeat;
-}*/
+.box-services{
+  display: inline-block;
+  width: 30%; /*para que las cajas tengan un ancho de 30%*/
+  margin-top: 63px; /*margen de la parte de arriba 63px*/
+}
+.text-services{
+  font-size: 35px;
+  letter-spacing: 2px; /*Espacio entre cada letra*/
+}
+#nosotros{
+    padding: 45px;
+/*    box-shadow: 0 10px 30px 0px #bbb;
+    -webkit-box-shadow: 0 10px 30px 0px #bbb;*/
+    z-index: 10;
+    position: relative;
+    color: red;
+    background-color: #F6F9FC;
+    width: 100%;
+    max-width: 1100px;
+    height: auto;
+    margin: -108px auto 0;
+    font-family: 'Raleway', sans-serif;
+}
+div.imagen_about{
+  position: relative;
+     border-radius: 50%;       
+    background-size: contain;
+    width: 200px;
+    height: 300px;
+    padding: 0.4% 3%;
+    text-align: right;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-image: url(niños.jpg);
+
+}
 
 
 
